@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<item
+    android:title="Edit Message"
+    android:icon="@drawable/ic_action_edit_message"
+    android:id="@+id/action_edit_message"
+    app:showAsAction="always"/>
+<item
+    android:title="Show Current Position"
+    android:icon="@drawable/ic_action_position_info"
+    android:id="@+id/action_show_position"
+    app:showAsAction="always"/>
+
+</menu>
