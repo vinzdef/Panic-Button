@@ -166,9 +166,16 @@ public class MainActivity extends ActionBarActivity {
                 try {
                     Location loc = locator.getLocation();
                     SharedPreferences sp = getSharedPreferences(SETTINGS_FILE, 0);
-                    String messageText = sp.getString(MESSAGE_TEXT_KEY, "I'm in desperate need of help, please come ASAP!");
-                    messageText += "\n\nGPS COORDINATES: \nLatitude: " + loc.getLatitude() + " \nLongitude: " + loc.getLongitude() + "\n\nADDRESS: \n" + Locator.getAddressFromLocation(loc, getApplicationContext());
+
+                    String messageText = sp.getString(MESSAGE_TEXT_KEY, null);
+
+                    if (messageText == null) {
+                        messageText = "I need help come ASAP!";
+                    }
+
+                    messageText += "\nCOORDINATES: \nLat: " + loc.getLatitude() + " \nLng: " + loc.getLongitude() + "\n\nADDRESS: \n" + Locator.getAddressFromLocation(loc, getApplicationContext());
                     //Toast.makeText(getApplicationContext(), messageText, Toast.LENGTH_LONG).show();
+
                     SmsManager smsMan = SmsManager.getDefault();
                     ArrayList<Person> recipients = PersonManager.getSavedPersons(getApplicationContext());
                     for (Person p : recipients){
