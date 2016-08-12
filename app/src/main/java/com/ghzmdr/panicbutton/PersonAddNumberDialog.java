@@ -31,27 +31,27 @@ public class PersonAddNumberDialog {
         root.addView(textName);
         root.addView(textNumber);
 
-        dialog = builder.setTitle("Input data")
-                .setView(root)
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        String name = textName.getText().toString(), number = textNumber.getText().toString();
-                        if (name != null && !name.equals(""))
-                            if (number != null && !number.equals("")) {
-                                Person p = new Person(number, name);
-                                PersonManager.savePerson(p, context);
-                                toUpdate.setAdapter(new PersonAdapter(context, PersonManager.getSavedPersons(context)));
-                            }
-                    }
-                })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
-                .create();
+        dialog = builder
+                    .setView(root)
+                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            String name = textName.getText().toString(), number = textNumber.getText().toString();
+                            if (name != null && !name.equals(""))
+                                if (number != null && !number.equals("")) {
+                                    Person p = new Person(number, name);
+                                    PersonManager.savePerson(p, context);
+                                    toUpdate.setAdapter(new PersonAdapter(context, PersonManager.getSavedPersons(context)));
+                                }
+                        }
+                    })
+                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .create();
     }
 
     public void show() {
